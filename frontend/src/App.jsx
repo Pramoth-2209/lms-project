@@ -17,6 +17,7 @@ import { RegiStaffSubject } from "./pages/RegiStaffSubject";
 import { RegiSubjectClass } from "./pages/RegiSubjectClass";
 import { RegistudentElective } from "./pages/RegiStudentElective";
 import { StaffSubjectClass } from "./pages/StaffSubjectClass";
+import { UploadVideo } from "./pages/Uploadvideo";
 
 export const App = () => {
   const router=createBrowserRouter([
@@ -78,12 +79,18 @@ export const App = () => {
     {
       path:"/RegiStaffSubject",
       element:<RegiStaffSubject/>
-    },{
+    },
+    {
       path:"/RegiSubjectClass",
       element:<RegiSubjectClass/>
-    },{
+    },
+    {
       path:"/RegiStudentElective",
       element:<RegistudentElective/>
+    },
+    {
+      path:"/UploadVideo",
+      element:<UploadVideo/>
     }
       ]
     },

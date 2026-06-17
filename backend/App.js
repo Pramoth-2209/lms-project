@@ -68,7 +68,7 @@ app.post("/register", (req, res) => {
 
 app.get("/navbar", (req, res) => {
   connection.query(
-    "select n.id,n.name,n.url,n.icon,n.isActive,n.role from users u left join navbar n on u.role=n.role where u.id=?",[10], // session.id add pannanum daa marathuratha
+    "select n.id,n.name,n.url,n.icon,n.isActive,n.role from users u left join navbar n on u.role=n.role where u.id=?",[5], // session.id add pannanum daa marathuratha
     (err, result) => {
       if (err) throw err;
       res.json(result);
@@ -230,6 +230,27 @@ left join class c on sc.sc_staff_subject_id=c.class_id
   res.json(result)
  })       
   } catch (error) {
+    console.log(error);
+    
+  }
+})
+
+app.get("/Uploadvideos",(req,res)=>{
+  try {
+    connection.query(`select sc.subject_class_id,sub.subject_name,sub.subject_code,sub.semester,c.class_name from staff s 
+      left join staff_subject ss on s.staff_id=ss.ss_staff_id 
+      left join subject sub on ss.ss_subject_id=sub.subject_id
+      left join subject_class sc on sub.subject_id=sc.sc_staff_subject_id
+      left join class c on sc.sc_staff_subject_id=c.class_id
+      where staff_id=?`,[1],(err,result)=>{
+      if(err){
+        console.log("staffsubjectclass: "+err);
+        return res.status(500).json({message:"database error in staffsubjectclass"})
+      }
+      res.json(result)
+      })
+  } catch (error) {
+    console.log(error);
     
   }
 })

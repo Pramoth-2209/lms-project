@@ -1,9 +1,33 @@
-import React from "react";
+import { useEffect, useState } from "react"
+import { UploadCard } from "../components/UploadCard"
 
-export const Uploadvideo = () => {
-  return (
+export const UploadVideo=()=>{
+    const[uploadVideoData,setUploadVideoData]=useState([]);
+
+    useEffect(()=>{
+        fetch("http://localhost:5000/Uploadvideos")
+        .then(res=>res.json())
+        .then(data=>{
+            setUploadVideoData(data)
+        })
+        
+        
+    },[])
+
+        useEffect(()=>{
+            console.log(uploadVideoData);
+        },[uploadVideoData])
+return(
     <>
-        <input type="text" />
+    
+    {
+        uploadVideoData.map((val)=>{
+            return(
+            <UploadCard key={val.subject_class_id || index} val={val}/>
+            )
+        })
+        
+     }   
     </>
-  );
-};
+)
+}

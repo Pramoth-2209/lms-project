@@ -54,8 +54,7 @@ export const StaffSubClass=()=>{
                   </TableCell>
                    <TableCell>
                     {subclass.semester}
-                  </TableCell>
-                 
+                  </TableCell>             
           </TableRow>
            ))} 
       </TableBody>
