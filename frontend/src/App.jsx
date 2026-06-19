@@ -18,6 +18,8 @@ import { RegiSubjectClass } from "./pages/RegiSubjectClass";
 import { RegistudentElective } from "./pages/RegiStudentElective";
 import { StaffSubjectClass } from "./pages/StaffSubjectClass";
 import { UploadVideo } from "./pages/Uploadvideo";
+import { AddVideo } from "./pages/AddVideo";
+import { StaffVideo } from "./pages/StaffVideo";
 
 export const App = () => {
   const router=createBrowserRouter([
@@ -91,6 +93,15 @@ export const App = () => {
     {
       path:"/UploadVideo",
       element:<UploadVideo/>
+    },
+    {
+      path:"/AddVideo/:ssId",
+      element:<AddVideo/>
+    }
+    ,
+    {
+      path:"/StaffVideo/:id",
+      element:<StaffVideo/>
     }
       ]
     },

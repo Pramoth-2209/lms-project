@@ -7,6 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
+import { NavLink } from "react-router-dom"
 
 export function UploadCard({val}) {
   return (
@@ -24,9 +25,11 @@ export function UploadCard({val}) {
         </p>
       </CardContent>
       <CardFooter>
+        <NavLink to={`/StaffVideo/${val.subject_class_id}`}>
         <Button variant="outline" size="sm" className="w-full">
-          Upload Video
+          Open class
         </Button>
+        </NavLink>
       </CardFooter>
     </Card>
   )

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { UploadCard } from "../components/UploadCard"
+import { NavLink } from "react-router-dom";
 
 export const UploadVideo=()=>{
     const[uploadVideoData,setUploadVideoData]=useState([]);
@@ -23,11 +24,15 @@ return(
     {
         uploadVideoData.map((val)=>{
             return(
-            <UploadCard key={val.subject_class_id || index} val={val}/>
+        
+                <UploadCard key={val.subject_class_id || index} val={val}/>
+           
             )
+
         })
         
-     }   
+     } 
+       
     </>
 )
 }

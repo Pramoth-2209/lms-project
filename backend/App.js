@@ -182,6 +182,20 @@ app.post("/registerStudentElective",(req,res)=>{
   })
   
 })
+
+app.post("/registerVideo",(req,res)=>{
+  const{subjectClassId,videoTitle,videoDescription,videoUrl}=req.body
+  // console.log(subjectClassId,videoTitle,videoDescription,videoUrl);
+  connection.query("insert into video(v_subject_class_id,video_tittle,video_description,url) values(?,?,?,?)",[subjectClassId,videoTitle,videoDescription,videoUrl],(err,result)=>{
+    if(err){
+      console.log("registerVideo error: "+err);
+      res.status(500).json({message:"database error in upload"});
+      
+    }
+    res.json({message:"video successfully uploaded"})
+  })
+  
+})
 app.get("/staffsandstudents", (req, res) => {
   // if (!req.session.user) {
     // res.status(401).json({ message: "unauthorized", loggedin: false });
@@ -254,6 +268,28 @@ app.get("/Uploadvideos",(req,res)=>{
     
   }
 })
+
+app.get("/staff_Class_Video/:id",(req,res)=>{
+  const{id}=req.params;
+  console.log(id);
+  
+  try {
+      connection.query("select * from video where v_subject_class_id=?",[id],(err,result)=>{
+        if(err){
+          console.log("staff_Class_Video: "+err);
+          res.status(500)
+        }
+        console.log("successfullly fetched"+ result);
+        res.json(result[0])
+        
+      })
+  } catch (error) {
+    console.log(error);
+    
+  }
+})
+
+
 
 app.listen(5000, () => {
   console.log("app running in localhost 5000");
