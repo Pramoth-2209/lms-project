@@ -274,17 +274,40 @@ app.get("/staff_Class_Video/:id",(req,res)=>{
   console.log(id);
   
   try {
-      connection.query("select * from video where v_subject_class_id=?",[id],(err,result)=>{
+      connection.query("select * from video where v_subject_class_id=? order by video_id DESC",[id],(err,result)=>{
         if(err){
           console.log("staff_Class_Video: "+err);
           res.status(500)
         }
         console.log("successfullly fetched"+ result);
-        res.json(result[0])
+        res.json(result)
         
       })
   } catch (error) {
     console.log(error);
+    
+  }
+})
+
+app.get("/student_Video",(req,res)=>{
+  try {
+    connection.query(`
+      select v.video_id,v.video_tittle,v.video_description,v.url from users u left join student s on u.id=s.s_user_id  
+      inner join class c on s.s_class_id=c.class_id
+      inner join subject_class sc on c.class_id=sc.sc_class_id
+      inner join video v on sc.subject_class_id=v.v_subject_class_id where u.id=? order by v.video_id desc
+      `,[1],(err,result)=>{
+        if(err){
+          res.status(500).json({message:"db error"})
+        }
+        else{
+          console.log(result);
+          
+          res.json(result)
+        }
+      })
+  } catch (error) {
+    console.log("/sudent_video: "+error);
     
   }
 })

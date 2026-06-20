@@ -5,10 +5,10 @@ import { NavLink, useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 
 
-export const StaffVideo=({params})=>{
+export const StaffVideo=()=>{
     const val=useParams();
     console.log(val);
-    const [videoresponse,setVideoResponse]=useState(null)
+    const [videoresponse,setVideoResponse]=useState([])
     
     
     useEffect(()=>{
@@ -38,13 +38,17 @@ export const StaffVideo=({params})=>{
     },[val.id])
     
     return(
-        <><div>
+        <>
+        <div>
             {<NavLink to={`/AddVideo/${val.id}`}> 
            <Button variant="default" size="sm" className="w-full"><UploadIcon/> Upload</Button>
            </NavLink>}
         </div>
         <div>
-            <StaffClassVideo result={videoresponse}/>
+            { videoresponse.map((data)=>(
+            <StaffClassVideo key={data.id} result={data}/>
+            ))
+            }
         </div>
             
         </>

@@ -10,7 +10,9 @@ import {
 
 import { Button } from "@/components/ui/button"
 
-export const VideoCard = () => {
+export const VideoCard = ({videodata}) => {
+  
+  
   return (
 
     <div className="p-10">
@@ -20,7 +22,9 @@ export const VideoCard = () => {
         <CardHeader className="flex-1">
 
           <CardTitle>
-           thumbnail
+           <p>
+            {videodata?.video_tittle}
+          </p>
           </CardTitle>
 
         </CardHeader>
@@ -28,19 +32,17 @@ export const VideoCard = () => {
         <CardFooter >
           <CardContent >
 
-          <p>
-           Unit-1 javaScript
-          </p>
+          
           <CardDescription>
-            Welcome to your portal
+            {videodata?.video_description}
           </CardDescription>
 
         </CardContent>
-          
+          <a href={videodata?.url}>
           <Button>
-            Open
+              open
           </Button>
-
+        </a>
         </CardFooter>
 
       </Card>

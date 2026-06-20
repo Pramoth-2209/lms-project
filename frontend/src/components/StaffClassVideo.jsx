@@ -23,7 +23,9 @@ export const StaffClassVideo = ({result}) => {
         <CardHeader className="flex-1">
 
           <CardTitle>
-           thumbnail
+            <p>
+              {result?.video_tittle}
+            </p>
           </CardTitle>
 
         </CardHeader>
@@ -31,9 +33,7 @@ export const StaffClassVideo = ({result}) => {
         <CardFooter >
           <CardContent >
 
-          <p>
-           {result?.video_tittle}
-          </p>
+         
           <CardDescription>
           {result?.video_description}
           </CardDescription>
