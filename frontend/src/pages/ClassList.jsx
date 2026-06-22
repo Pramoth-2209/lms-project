@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react"
 import { UploadCard } from "../components/UploadCard"
+import { SelectPostType } from "../components/SelectPostType";
 
 
 
-export const UploadVideo=()=>{
+export const ClassList=()=>{
     const[uploadVideoData,setUploadVideoData]=useState([]);
 
     useEffect(()=>{
@@ -27,7 +28,6 @@ return(
             return(
         <>
                 <UploadCard key={val.subject_class_id || index} val={val}/>
-                
                 </>
             )
 

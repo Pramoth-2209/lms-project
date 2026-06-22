@@ -17,9 +17,10 @@ import { RegiStaffSubject } from "./pages/RegiStaffSubject";
 import { RegiSubjectClass } from "./pages/RegiSubjectClass";
 import { RegistudentElective } from "./pages/RegiStudentElective";
 import { StaffSubjectClass } from "./pages/StaffSubjectClass";
-import { UploadVideo } from "./pages/Uploadvideo";
+import { ClassList} from "./pages/ClassList";
 import { AddVideo } from "./pages/AddVideo";
 import { StaffVideo } from "./pages/StaffVideo";
+import { PostType } from "./pages/PostType";
 
 export const App = () => {
   const router=createBrowserRouter([
@@ -91,8 +92,8 @@ export const App = () => {
       element:<RegistudentElective/>
     },
     {
-      path:"/UploadVideo",
-      element:<UploadVideo/>
+      path:"/ClassList",
+      element:<ClassList/>
     },
     {
       path:"/AddVideo/:ssId",
@@ -102,6 +103,10 @@ export const App = () => {
     {
       path:"/StaffVideo/:id",
       element:<StaffVideo/>
+    },
+    {
+      path:"/PostType/:id",
+      element:<PostType/>
     }
       ]
     },
