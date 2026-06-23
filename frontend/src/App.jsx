@@ -21,6 +21,7 @@ import { ClassList} from "./pages/ClassList";
 import { AddVideo } from "./pages/AddVideo";
 import { StaffVideo } from "./pages/StaffVideo";
 import { PostType } from "./pages/PostType";
+import { RegisterAnnouncement } from "./components/RegisterAnnouncement";
 
 export const App = () => {
   const router=createBrowserRouter([
@@ -107,6 +108,10 @@ export const App = () => {
     {
       path:"/PostType/:id",
       element:<PostType/>
+    },
+    {
+      path:"/RegisterAnnouncement/:id",
+      element:<RegisterAnnouncement/>
     }
       ]
     },

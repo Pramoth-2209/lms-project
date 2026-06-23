@@ -66,7 +66,7 @@ export const SelectPostType = ({ onSelect,param }) => {
     <div className="flex w-full max-w-md flex-col gap-4">
       
       {/* Option 1: Send Notification */}
-      
+      <NavLink to={`/RegisterAnnouncement/${param.id}`}>
       <Item 
         variant="outline"
         className=" hover:bg-slate-50 hover:shadow-md hover:-translate-y-0.5 hover:border-slate-300"
@@ -76,12 +76,13 @@ export const SelectPostType = ({ onSelect,param }) => {
           <Megaphone size={20} />
         </ItemMedia>
         <ItemContent>
-          <ItemTitle className="font-semibold text-gray-900">Send Notification</ItemTitle>
+          <ItemTitle className="font-semibold text-gray-900">Send Announcement</ItemTitle>
           <ItemDescription>
             Broadcast urgent notices, circulars, or text announcements to the class.
           </ItemDescription>
         </ItemContent>
       </Item>
+      </NavLink>
       
 
       {/* Option 2: Upload Video */}

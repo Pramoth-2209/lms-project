@@ -71,7 +71,10 @@ app.get("/navbar", (req, res) => {
     "select n.id,n.name,n.url,n.icon,n.isActive,n.role from users u left join navbar n on u.role=n.role where u.id=?",[5], // session.id add pannanum daa marathuratha
     (err, result) => {
       if (err) throw err;
+       
       res.json(result);
+    
+      
     },
   );
 });
@@ -166,6 +169,21 @@ app.post("/registerSubjectClass",(req,res)=>{
     res.json({message:"successfully registered"});
   })
   
+  
+})
+
+
+
+app.post("/registerAnnouncement",(req,res)=>{
+  const {sc_id,announcement}=req.body;
+  connection.query("insert into notification(n_subject_class_id,message)values(?,?)",[sc_id,announcement],(err,result)=>{
+    if(err){
+      console.log(err);
+      res.status(500).json({message:"database erroor at registerAnnouncement"})
+      
+    }
+    res.json({message:"Announcement successfull"})
+  })
   
 })
 

@@ -16,19 +16,21 @@
   export function AppSidebar() {
 
     const [navVal,setnavVal]=useState([]);
-    const loaction=useLocation();
+    const location=useLocation();
     useEffect(()=>{
     fetch("http://localhost:5000/navbar")
     .then(res=>res.json())
     .then(val=>setnavVal(val))
     },[])
+    // console.log(" it is nav val: ",navVal);
+    
     return (
       <Sidebar >
-        <SidebarHeader asChild>
+        <SidebarHeader>
         <Network/>
         </SidebarHeader>
   {/* className="p-3 space-y-3" */}
-        <SidebarContent >
+        <SidebarContent  >
           <SidebarGroup>
             <SidebarMenu>
               {navVal.map((items)=>{
